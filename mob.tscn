@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgjessjbx3c7b"]
+
+[ext_resource type="Script" path="res://Mob.gd" id="1_yiq47"]
+[ext_resource type="Texture2D" uid="uid://71cbax6tm4so" path="res://art/enemyFlyingAlt_1.png" id="2_wqov5"]
+[ext_resource type="Texture2D" uid="uid://b8wl6i0yg2nt2" path="res://art/enemyFlyingAlt_2.png" id="3_gdnqw"]
+[ext_resource type="Texture2D" uid="uid://ddonufnxjw06a" path="res://art/enemySwimming_1.png" id="4_cauru"]
+[ext_resource type="Texture2D" uid="uid://dytryn0kmvhv3" path="res://art/enemySwimming_2.png" id="5_ewnyp"]
+[ext_resource type="Texture2D" uid="uid://bqtj64np3xb85" path="res://art/enemyWalking_1.png" id="6_lxpoy"]
+[ext_resource type="Texture2D" uid="uid://cb7etvbq1qmky" path="res://art/enemyWalking_2.png" id="7_e8ngv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ocim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wqov5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gdnqw")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cauru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ewnyp")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_lxpoy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e8ngv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e1xg6"]
+radius = 37.0
+height = 98.0
+
+[node name="Mob" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_yiq47")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_8ocim")
+animation = &"walk"
+frame = 1
+frame_progress = 0.645835
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e1xg6")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
