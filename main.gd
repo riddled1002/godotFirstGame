@@ -6,8 +6,7 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	new_game()
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -52,6 +51,7 @@ func _on_mob_timer_timeout():
 	
 	# Add some randomness to the direction
 	direction += randf_range(-PI /4, PI / 4)
+	mob.rotation = direction
 	
 	# Choose the velocity for the mob.
 	var velocity = Vector2(randf_range(150.0, 250), 0.0)
